@@ -264,7 +264,7 @@ OBJETIVOS:
 	    cTitInf := 'HOY ES: '+cFecha(DATE())+' A¥O: '+;
 		       cAnoUsr+' '+cNivTxt+' JORNADA: '+cJorTxt
 */
-	    cTitInf := 'VC.212.07-0 A¥O: '+;
+	    cTitInf := 'VC.214.04-1 A¥O: '+;
 		       cAnoUsr+' '+cNivTxt+' JORNADA: '+cJorTxt
 	  *ÀT¡tulos para el menu
 

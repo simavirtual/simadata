@@ -293,16 +293,30 @@ FUNCTION Data_101(lShared,nModCry,cNomSis,cEmpPal,cNitEmp,;
        nCodPrn := SDA->nCodigoPrn
        lPrnArc := SDA->lPrnArcDat
        cOpcPrn := SDA->cOpcPrnDat
-//* ojo
+///* ojo
+
        FOR j := nRepIni TO nRepFin
+
+	   cAnoSis := SUBS(STR(j,4),3,2)
+	   cPatSis := STR(j,4)+SUBS(cPatSis,5,4)
+
+	   lUseDbf(.T.,PathDos+'\'+cPatSis+'\'+;
+		       fCarAno+STR(j,4)+ExtFile,'CAA',;
+		       NIL,lShared,nModCry)
+
+	   cMaeAlu := ALLTRIM(CAA->cMaeHabCaA)
+	   CloseDbf('CAA')
+
 	   FOR i := 1 TO LEN(cMaeAlu)/3
 	       cMaeAct := SUBS(cMaeAlu,i*3-2,3)
 	       lValiRepo(lShared,nModCry,cNomSis,cPatSis,;
 			 cMaeAct,cAnoUsr,STR(j,4),STR(nRepFin,4),;
 			 nMesIni,PathUno,PathDos,@aErrRep)
 	   ENDFOR
+
        ENDFOR
-**/
+
+*//
        RESTSCREEN(0,0,24,79,cSavPan)
        CloseAll(aUseDbf)
 *>>>>FIN VALIDACION DEL REPORTE
@@ -431,6 +445,7 @@ FUNCTION Data_101(lShared,nModCry,cNomSis,cEmpPal,cNitEmp,;
 ***********FIN SELECCION DE LAS AREAS DE TRABAJO
 
 ***********ANALISIS PARA CADA NIVEL
+	     cMaeAlu := ALLTRIM(CAA->cMaeHabCaA)
 	     FOR i := 1 TO LEN(cMaeAlu)/3
 
 *---------------SELECION DE LAS AREAS DE TRABAJO
@@ -475,7 +490,7 @@ FUNCTION Data_101(lShared,nModCry,cNomSis,cEmpPal,cNitEmp,;
 *---------------IMPRESION DEL INFORME PARA CADA GRUPO
 		  SELECT GRU
 		  GRU->(DBGOTOP())
-* lLocCodigo('cCodigoGru','GRU','1103')  // ojo
+* lLocCodigo('cCodigoGru','GRU','0001')  // ojo
 		  DO WHILE .NOT. GRU->(EOF())
 
 *....................PREPARACION DE LAS VARIABLES DE ARCHIVO
@@ -718,7 +733,7 @@ FUNCTION lSaveRep(lShared,nModCry,cNomSis,cNomUsr,cAnoUsr,cMaeAlu,;
 			    cMes(nMesIni)+' A '+cFecha(dFecPrn))
        SELECT CLI
        CLI->(DBGOTOP())
-*GO 28  // ojo
+* GO 2  // ojo
        DO WHILE .NOT. CLI->(EOF())
 
 **********ANALISIS SI EL ESTUDIANTE PERTENECE AL GRUPO

@@ -103,8 +103,6 @@ FUNCTION Data_412(lShared,nModCry,cNomSis,cEmpPal,cNitEmp,;
 *>>>>LECTURA DE PATHS
        PathDatAno(lShared,cPatSis,cAnoUsr,@PathUno,;
 		  @PathDos,@PathTre,@PathCua,nModCry,.F.)
-
-       cMaeAct := cNivelEst(nFilInf+1,nColInf,cMaeAlu)
 *>>>>FIN LECTURA DE PATHS
 
 *>>>>AREAS DE TRABAJO
@@ -116,17 +114,13 @@ FUNCTION Data_412(lShared,nModCry,cNomSis,cEmpPal,cNitEmp,;
        AADD(aUseDbf,{.T.,PathUno+'\'+PathSis+'\'+;
 			 FilePer,'PER',NIL,lShared,nModCry})
 
-       AADD(aUseDbf,{.T.,PathUno+'\'+cPatSis+'\'+cMaeAct+'\'+;
-			 FileGru+cMaeAct+cAnoSis+ExtFile,'GRU',NIL,lShared,nModCry})
-
-       AADD(aUseDbf,{.T.,PathUno+'\'+cPatSis+'\'+cMaeAct+'\'+;
-			 FileAlu+cMaeAct+cAnoSis+ExtFile,cMaeAct,;
-			 PathUno+'\'+cPatSis+'\'+cMaeAct+'\'+;
-			 fNtxAlu+cMaeAct+cAnoSis+cExtNtx,lShared,nModCry})
+       AADD(aUseDbf,{.T.,PathUno+'\'+cPatSis+'\'+;
+			 FileGru+'POS'+cAnoSis+ExtFile,'GRU',NIL,lShared,nModCry})
 *>>>>FIN AREAS DE TRABAJO
 
 *>>>>SELECION DE LAS AREAS DE TRABAJO
-       IF !lUseDbfs(aUseDbf)
+       IF !lUseMae(lShared,PathUno+'\'+cPatSis,cMaeAlu,cAnoSis) .OR.;
+	  !lUseDbfs(aUseDbf)
 	  cError('ABRIENDO ARCHIVOS')
 	  CloseAll(aUseDbf)
 	  RETURN NIL
@@ -193,7 +187,7 @@ FUNCTION Data_412(lShared,nModCry,cNomSis,cEmpPal,cNitEmp,;
 	  SET DEVICE TO PRINT
        ELSE
 	  FilePrn := 'cntrntnt'
-	  nOpcPrn := nPrinter_On(cNomUsr,@FilePrn,SDA->cOpcPrnDat,.F.)
+	  nOpcPrn := nPrinter_On(cNomUsr,@FilePrn,SDA->cOpcPrnDat,.F.,,,PathDoc)
 	  IF EMPTY(nOpcPrn)
 	      CloseAll(aUseDbf)
 	      RETURN NIL
@@ -306,7 +300,9 @@ FUNCTION Data_412(lShared,nModCry,cNomSis,cEmpPal,cNitEmp,;
 *--------------ANALISIS SI ESTUDIANTE ESTA RETIRADO
 		 lRetadoTes := .F.
 
-		 lHayAlu := lSekCodigo(CLI->cCodigoEst,cMaeAct)
+		 lHayAlu := lSekCodMae(CLI->cCodigoEst,;
+				       cMaeAlu,@cMaeAct,.F.)
+
 		 IF lHayAlu
 		    cNombreTes := RTRIM(&cMaeAct->cApelliEst)+' '+;
 				  RTRIM(&cMaeAct->cNombreEst)

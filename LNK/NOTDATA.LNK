@@ -13,4 +13,5 @@
        DEFINE lValConcep,PathCarAno,cFilePlan,lValCodRec
        DEFINE RecuCarAno,MenuEstCta,lParam0104
        DEFINE lValInf,MenuOtrIso
+       DEFINE SumArrCon
 #>>>>FIN MODULOS EXCLUIDOS

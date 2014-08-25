@@ -1570,7 +1570,7 @@ FUNCTION OtrRep011(lShared,nModCry,cNomSis,cEmpPal,cNitEmp,;
 	  SET DEVICE TO PRINT
        ELSE
 	  FilePrn := 'repormes'
-	  nOpcPrn := nPrinter_On(cNomUsr,@FilePrn,SDA->cOpcPrnDat,.F.)
+	  nOpcPrn := nPrinter_On(cNomUsr,@FilePrn,SDA->cOpcPrnDat,.F.,,,PathDoc)
 	  IF EMPTY(nOpcPrn)
 	      RETURN NIL
 	  ENDIF
@@ -2242,7 +2242,7 @@ FUNCTION OtrRep013(lShared,nModCry,cNomSis,cEmpPal,cNitEmp,;
 	  SET DEVICE TO PRINT
        ELSE
 	  FilePrn := 'repornov'
-	  nOpcPrn := nPrinter_On(cNomUsr,@FilePrn,SDA->cOpcPrnDat,.F.,.T.)
+	  nOpcPrn := nPrinter_On(cNomUsr,@FilePrn,SDA->cOpcPrnDat,.F.,,,PathDoc)
 	  IF EMPTY(nOpcPrn)
 	      RETURN NIL
 	  ENDIF
@@ -2671,7 +2671,7 @@ LOCAL nVlr := 0
 	  SET DEVICE TO PRINT
        ELSE
 	  FilePrn := 'valrep'
-	  nOpcPrn := nPrinter_On(cNomUsr,@FilePrn,SDA->cOpcPrnDat,.F.)
+	  nOpcPrn := nPrinter_On(cNomUsr,@FilePrn,SDA->cOpcPrnDat,.F.,,,PathDoc)
 	  IF EMPTY(nOpcPrn)
 	      RETURN NIL
 	  ENDIF
@@ -3277,7 +3277,7 @@ FUNCTION OtrRep015(lShared,nModCry,cNomSis,cEmpPal,cNitEmp,;
 	  SET DEVICE TO PRINT
        ELSE
 	  FilePrn := 'totalrep'
-	  nOpcPrn := nPrinter_On(cNomUsr,@FilePrn,SDA->cOpcPrnDat,.F.)
+	  nOpcPrn := nPrinter_On(cNomUsr,@FilePrn,SDA->cOpcPrnDat,.F.,,,PathDoc)
 	  IF EMPTY(nOpcPrn)
 	      RETURN NIL
 	  ENDIF
@@ -3658,7 +3658,7 @@ FUNCTION OtrRep016(lShared,nModCry,cNomSis,cEmpPal,cNitEmp,;
 	  SET DEVICE TO PRINT
        ELSE
 	  FilePrn := 'repgru'
-	  nOpcPrn := nPrinter_On(cNomUsr,@FilePrn,SDA->cOpcPrnDat,.F.)
+	  nOpcPrn := nPrinter_On(cNomUsr,@FilePrn,SDA->cOpcPrnDat,.F.,,,PathDoc)
 	  IF EMPTY(nOpcPrn)
 	      RETURN NIL
 	  ENDIF
@@ -4600,7 +4600,7 @@ FUNCTION OtrRep018(lShared,nModCry,cNomSis,cEmpPal,cNitEmp,;
 	  SET DEVICE TO PRINT
        ELSE
 	  FilePrn := 'totalrep'
-	  nOpcPrn := nPrinter_On(cNomUsr,@FilePrn,SDA->cOpcPrnDat,.F.)
+	  nOpcPrn := nPrinter_On(cNomUsr,@FilePrn,SDA->cOpcPrnDat,.F.,,,PathDoc)
 	  IF EMPTY(nOpcPrn)
 	      RETURN NIL
 	  ENDIF
@@ -4969,7 +4969,7 @@ FUNCTION OtrRep019(lShared,nModCry,cNomSis,cEmpPal,cNitEmp,;
 	  ELSE
 	     FilePrn := 'pagmes'+ALLTRIM(STR(nMesIni,2))
 	  ENDIF
-	  nOpcPrn := nPrinter_On(cNomUsr,@FilePrn,SDA->cOpcPrnDat,.F.)
+	  nOpcPrn := nPrinter_On(cNomUsr,@FilePrn,SDA->cOpcPrnDat,.F.,,,PathDoc)
 	  IF EMPTY(nOpcPrn)
 	      RETURN NIL
 	  ENDIF

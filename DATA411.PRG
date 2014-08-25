@@ -181,7 +181,7 @@ FUNCTION Data_411(lShared,nModCry,cNomSis,cEmpPal,cNitEmp,;
 	  SET DEVICE TO PRINT
        ELSE
 	  FilePrn := 'cntrntnt'
-	  nOpcPrn := nPrinter_On(cNomUsr,@FilePrn,SDA->cOpcPrnDat,.F.)
+	  nOpcPrn := nPrinter_On(cNomUsr,@FilePrn,SDA->cOpcPrnDat,.F.,,,PathDoc)
 	  IF EMPTY(nOpcPrn)
 	      CloseAll(aUseDbf)
 	      RETURN NIL
