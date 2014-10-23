@@ -316,7 +316,7 @@ FUNCTION Data_101(lShared,nModCry,cNomSis,cEmpPal,cNitEmp,;
 
        ENDFOR
 
-*//
+*///
        RESTSCREEN(0,0,24,79,cSavPan)
        CloseAll(aUseDbf)
 *>>>>FIN VALIDACION DEL REPORTE
@@ -408,6 +408,7 @@ FUNCTION Data_101(lShared,nModCry,cNomSis,cEmpPal,cNitEmp,;
 		  FileRep+ALLTRIM(SCO->cCodEmpCon)+cMesIni+ExtFile)
 *>>>>FIN CREACION DEL ARCHIVO DEL REPORTE
 
+
 *>>>>SELECION DE LAS AREAS DE TRABAJO
        IF !lUseDbf(.T.,cPatSis+'\REPORT\'+cMes(VAL(cMesIni),3)+'\'+;
 		       FileRep+ALLTRIM(SCO->cCodEmpCon)+cMesIni+ExtFile,;
@@ -421,6 +422,7 @@ FUNCTION Data_101(lShared,nModCry,cNomSis,cEmpPal,cNitEmp,;
 
 *>>>>ANALISIS PARA CADA A¥O
        FOR j := CAR->nRepIniCar TO CAR->nRepFinCar
+
 
 ***********SELECCION DE LAS AREAS DE TRABAJO
 	     cAnoSis := SUBS(STR(j,4),3,2)
@@ -446,6 +448,7 @@ FUNCTION Data_101(lShared,nModCry,cNomSis,cEmpPal,cNitEmp,;
 
 ***********ANALISIS PARA CADA NIVEL
 	     cMaeAlu := ALLTRIM(CAA->cMaeHabCaA)
+
 	     FOR i := 1 TO LEN(cMaeAlu)/3
 
 *---------------SELECION DE LAS AREAS DE TRABAJO
@@ -493,6 +496,7 @@ FUNCTION Data_101(lShared,nModCry,cNomSis,cEmpPal,cNitEmp,;
 * lLocCodigo('cCodigoGru','GRU','0001')  // ojo
 		  DO WHILE .NOT. GRU->(EOF())
 
+
 *....................PREPARACION DE LAS VARIABLES DE ARCHIVO
 		       FileCli := PathDos+'\'+cPatSis+'\'+;
 				  'CLIENTES\CL'+GRU->cCodigoGru+cAnoSis+ExtFile
@@ -530,6 +534,7 @@ FUNCTION Data_101(lShared,nModCry,cNomSis,cEmpPal,cNitEmp,;
 			  LOOP
 		       ENDIF
 *....................FIN VALIDACION DE CONTENIDOS DE ARCHIVOS
+
 
 *....................GRABACION DEL REPORTE
 		       IF !lSaveRep(lShared,nModCry,cNomSis,cNomUsr,;
@@ -754,6 +759,7 @@ FUNCTION lSaveRep(lShared,nModCry,cNomSis,cNomUsr,cAnoUsr,cMaeAlu,;
 	    cNombreTes := SUBS(cNombreTes+SPACE(40),1,40)
 **********FIN BUSQUEDA DEL CODIGO DEL ESTUDIANTE
 
+
 **********LOCALIZACION DEL PAGO
 	    nRegPlz := 0
 	    nRecIni := nMesIniPag(CLI->cCodigoEst)
@@ -914,6 +920,7 @@ FUNCTION lSaveRep(lShared,nModCry,cNomSis,cNomUsr,cAnoUsr,cMaeAlu,;
 		 cMsgErr := 'RETIRADO. SE FACTURO '+cMes(nMesIniTpa)+;
 			    ' Y EL ULTIMO MES AUTORIZADO ES '+;
 			    cMes(&cMaeAct->nUltRecEst)
+
 
 		 AADD(aErrRep,{CLI->cCodigoEst,;
 			       &cMaeAct->cCodigoGru+'-'+;
@@ -1109,6 +1116,8 @@ FUNCTION lSaveRep(lShared,nModCry,cNomSis,cNomUsr,cAnoUsr,cMaeAlu,;
 					  cAnoUsr,nAnoIni,;
 					  aDetPag,nMesIniTpa,;
 					  @cCalifi,@cEdadNo,@nNroMes)
+
+
 
 		   cDebugs := ''
 
