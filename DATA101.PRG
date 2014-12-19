@@ -316,7 +316,7 @@ FUNCTION Data_101(lShared,nModCry,cNomSis,cEmpPal,cNitEmp,;
 
        ENDFOR
 
-*///
+//*/
        RESTSCREEN(0,0,24,79,cSavPan)
        CloseAll(aUseDbf)
 *>>>>FIN VALIDACION DEL REPORTE
