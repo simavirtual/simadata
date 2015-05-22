@@ -43,8 +43,8 @@ FUNCTION CreaDbfRep(lShared,nModCry,PathArc,fArchvo,aStrDbf)
        AADD(aDbfStr,{'cFecPrnRep','Character',08,0}) // Fecha de Corte
        AADD(aDbfStr,{'nMesIniPag','Numeric'  ,02,0}) // Mes Inicial del Pago
        AADD(aDbfStr,{'nMesFinPag','Numeric'  ,02,0}) // Mes Final del Pago
-       AADD(aDbfStr,{'nSdoActRep','Numeric'  ,10,2}) // Saldo Actual
-       AADD(aDbfStr,{'nSdoMorRep','Numeric'  ,10,2}) // Valor de la Mora
+       AADD(aDbfStr,{'nSdoActRep','Numeric'  ,12,2}) // Saldo Actual
+       AADD(aDbfStr,{'nSdoMorRep','Numeric'  ,12,2}) // Valor de la Mora
        AADD(aDbfStr,{'cCodigoRep','Character',18,0}) // N£mero de la Cuenta o Obligaci¢n
        AADD(aDbfStr,{'cDocNitRep','Character',11,0}) // N£mero de Identificaci¢n
        AADD(aDbfStr,{'cNombreRep','Character',45,0}) // Nombre Completo del Reportado
@@ -86,8 +86,8 @@ FUNCTION CreaDbfRep(lShared,nModCry,PathArc,fArchvo,aStrDbf)
        AADD(aDbfStr,{'cEstratRep','Character',01,0}) // Estrato
        AADD(aDbfStr,{'cFillerRep','Character',14,0}) // Filler
        AADD(aDbfStr,{'nValidoRep','Numeric'  ,02,0}) // Registro valido
-       AADD(aDbfStr,{'nVlrPagRep','Numeric'  ,10,2}) // Valor a pagar o pagado
-       AADD(aDbfStr,{'nVlrAboRep','Numeric'  ,10,2}) // Valor de los abonos
+       AADD(aDbfStr,{'nVlrPagRep','Numeric'  ,12,2}) // Valor a pagar o pagado
+       AADD(aDbfStr,{'nVlrAboRep','Numeric'  ,12,2}) // Valor de los abonos
 
        AADD(aDbfStr,{'nRegPagRep','Numeric'  ,04,0}) // Registro del Pago
        AADD(aDbfStr,{'cNomUsrPag','Character',10,0}) // Nombre del Usuario

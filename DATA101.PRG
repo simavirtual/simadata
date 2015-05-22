@@ -321,6 +321,7 @@ FUNCTION Data_101(lShared,nModCry,cNomSis,cEmpPal,cNitEmp,;
        CloseAll(aUseDbf)
 *>>>>FIN VALIDACION DEL REPORTE
 
+
 *>>>>IMPRESION DE ERRORES
        IF LEN(aErrRep) # 0
 
@@ -334,6 +335,7 @@ FUNCTION Data_101(lShared,nModCry,cNomSis,cEmpPal,cNitEmp,;
 	  RETURN NIL
        ENDIF
 *>>>>FIN IMPRESION DE ERRORES
+
 
 *>>>>AREAS DE TRABAJO
        aUseDbf := {}
@@ -361,6 +363,7 @@ FUNCTION Data_101(lShared,nModCry,cNomSis,cEmpPal,cNitEmp,;
 	  RETURN NIL
        ENDIF
 *>>>>FIN SELECION DE LAS AREAS DE TRABAJO
+
 
 *>>>>VALIDACION DEL VALOR TOTAL DE LOS SERVICIOS
        IF !lValTotSer(lShared,nModCry,PathUno,cPatSis,FileNiv,ExtFile,;
